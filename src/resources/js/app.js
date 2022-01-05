@@ -1,7 +1,17 @@
 import VueRouter from 'vue-router';
 import TaskListComponent from "./components/TaskListComponent";
 import TaskShowComponent from "./components/TaskShowComponent";
+import TaskRandomShowComponent from "./components/TaskRandomShowComponent";
 import TaskEditComponent from "./components/TaskEditComponent";
+
+import NfrashCardsComponent from "./components/NfrashCardsComponent";
+import QandAsComponent from "./components/QandAsComponent";
+
+import RfrashCardsComponent from "./components/RfrashCardsComponent";
+
+
+
+import Vue from 'vue';
 
 
 require('./bootstrap');
@@ -14,6 +24,10 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('nfrashcards-component',NfrashCardsComponent);
+Vue.component('qandas-component',QandAsComponent);
+
+Vue.component('rfrashcards-component',RfrashCardsComponent);
 
 
 Vue.use(VueRouter);
@@ -28,16 +42,24 @@ const router = new VueRouter({
         },
 
         {
-            path: '/todo/:todoId',
+            path: '/todo/show',
             name: 'task.show',
             component: TaskShowComponent,
             props: true
         },
 
         {
-            path: '/todo/edit',
+            path: '/todo/rshow',
+            name: 'task.rshow',
+            component: TaskRandomShowComponent,
+            props: true
+        },
+
+        {
+            path: '/todo/:taskId/edit',
             name: 'task.edit',
-            component: TaskEditComponent
+            component: TaskEditComponent,
+            props: true
         },
     ]
 });

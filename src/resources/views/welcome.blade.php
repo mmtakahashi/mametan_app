@@ -48,7 +48,7 @@
                 font-size: 84px;
             }
 
-            .kimono-title {
+            .mame-title {
                 text-decoration: none;
             }
 
@@ -101,7 +101,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <a class="kimono-title" href="{{ url('/todo') }}">まめ単。</a>
+                    <a class="mame-title" href="{{ url('/todo') }}">まめ単。</a>
                 </div>
             </div>
         </div>

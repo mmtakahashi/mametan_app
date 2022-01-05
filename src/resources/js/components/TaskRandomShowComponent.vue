@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <nfrashcards-component :getTasks="getTasks" :tasks="tasks"></nfrashcards-component>
+        <rfrashcards-component :getTasks="getTasks" :tasks="tasks"></rfrashcards-component>
     </div>
 </template>
 
