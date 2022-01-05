@@ -2093,6 +2093,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2103,11 +2109,9 @@ __webpack_require__.r(__webpack_exports__);
     increment: function increment() {
       this.num += 1;
     },
-    reset: function reset() {
-      this.num = 0;
-    },
     rd: function rd() {
-      this.num = Math.floor(Math.random() * 9 + 1) * 2 - 1;
+      // 乱数のところ、1-19なのでMath.floor(Math.random()*９+1)*2-1が正解ですね
+      this.num = Math.floor(Math.random() * 10 + 1) * 2 - 1;
     }
   },
   computed: {
@@ -2117,16 +2121,17 @@ __webpack_require__.r(__webpack_exports__);
       return this.num % 2 == 1;
     },
     QAcheck: function QAcheck() {
+      var numQ = Math.floor((this.num - 1) / 2);
+
       if (this.num == 0) {
         return "はじめ";
-      } else if (this.num % 2 == 1) {
-        return "Question";
-      } else if (this.num % 2 == 0) {
-        return "Answer";
+      } else if (this.num % 2 == 1 && this.num < 20) {
+        return this.tasks[numQ].question;
+      } else if (this.num % 2 == 0 && this.num < 21) {
+        return this.tasks[numQ].answer;
+      } else if (this.num >= 21) {
+        return "おしまい";
       }
-    },
-    numQ: function numQ() {
-      return Math.floor(this.num / 2 + 0.5);
     }
   },
   props: {
@@ -38729,30 +38734,37 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h2", [_vm._v(_vm._s(_vm.QAcheck))]),
-    _vm._v(" "),
-    _c("button", { on: { click: _vm.increment } }, [_vm._v("+1")]),
-    _vm._v(" "),
-    _c("button", { on: { click: _vm.reset } }, [_vm._v("reset")]),
-    _vm._v(" "),
-    _c("button", { on: { click: _vm.rd } }, [_vm._v("ランダム")]),
-    _vm._v(" "),
-    _c(
-      "p",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.numCheck,
-            expression: "numCheck",
-          },
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("div", { staticClass: "text-wrapper" }, [
+        _c("h2", [_vm._v(_vm._s(_vm.QAcheck))]),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "button-wrapper" },
+        [
+          _c("button", { on: { click: _vm.rd } }, [_vm._v("ランダム")]),
+          _vm._v(" "),
+          _vm.numCheck
+            ? [
+                _c("button", { on: { click: _vm.increment } }, [
+                  _vm._v("回答見る"),
+                ]),
+              ]
+            : _vm._e(),
         ],
-      },
-      [_c("button", { on: { click: _vm.increment } }, [_vm._v("回答見る")])]
-    ),
-  ])
+        2
+      ),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: { name: "task.list" } } }, [
+        _c("button", { staticClass: "btn btn-primary" }, [_vm._v("戻る")]),
+      ]),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

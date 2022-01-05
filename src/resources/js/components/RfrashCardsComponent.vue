@@ -6,9 +6,9 @@
 
         <div class="button-wrapper">
             <button @click="rd">ランダム</button>
-            <p v-show="numCheck" >
+            <template v-if="numCheck" >
                 <button @click="increment">回答見る</button>
-            </p>
+            </template>
         </div>
 
         <router-link v-bind:to="{name: 'task.list'}">
@@ -29,7 +29,8 @@ export default {
         this.num += 1
         },
     rd(){
-        this.num = Math.floor(Math.random()*9+1)*2-1
+        // 乱数のところ、1-19なのでMath.floor(Math.random()*９+1)*2-1が正解ですね
+        this.num = Math.floor(Math.random()*10+1)*2-1
         }
     },
     computed:{
