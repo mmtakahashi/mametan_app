@@ -4,6 +4,13 @@
             <h2>{{ QAcheck }}</h2>
         </div>
 
+        <!-- <div class="button-container">
+            <rswitch-component
+            @increment="increment"
+            @rd="rd">
+            </rswitch-component>            
+        </div> -->
+
         <div class="button-wrapper">
             <button @click="rd">ランダム</button>
             <template v-if="numCheck" >
@@ -18,7 +25,9 @@
 </template>
 
 <script>
+import RswitchComponent from './RswitchComponent.vue'
 export default {
+    components: { RswitchComponent },
     data: function() {
         return {
             num:0,
@@ -26,13 +35,13 @@ export default {
     },
     methods: {
         increment(){
-        this.num += 1
+            this.num += 1
         },
-    rd(){
-        // 乱数のところ、1-19なのでMath.floor(Math.random()*９+1)*2-1が正解ですね
-        this.num = Math.floor(Math.random()*10+1)*2-1
+        rd(){
+            // 乱数のところ、1-19なのでMath.floor(Math.random()*９+1)*2-1が正解ですね
+            this.num = Math.floor(Math.random()*10+1)*2-1
         }
-    },
+        },
     computed:{
         // numCheckは奇数でTrueになって、解答を見るボタンの表示非表示判定に使われます
         // ifほにゃreturnほげとしなくても、retun 等式と書いておけば、true falseが返ってくる

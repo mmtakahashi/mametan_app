@@ -1,14 +1,15 @@
 import VueRouter from 'vue-router';
 import TaskListComponent from "./components/TaskListComponent";
+import TaskCreateComponent from "./components/TaskCreateComponent";
 import TaskShowComponent from "./components/TaskShowComponent";
 import TaskRandomShowComponent from "./components/TaskRandomShowComponent";
 import TaskEditComponent from "./components/TaskEditComponent";
 
 import NfrashCardsComponent from "./components/NfrashCardsComponent";
-import QandAsComponent from "./components/QandAsComponent";
+import NswitchComponent from "./components/NswitchComponent";
 
 import RfrashCardsComponent from "./components/RfrashCardsComponent";
-
+import RswitchComponent from "./components/RswitchComponent";
 
 
 import Vue from 'vue';
@@ -25,9 +26,10 @@ window.Vue = require('vue');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('nfrashcards-component',NfrashCardsComponent);
-Vue.component('qandas-component',QandAsComponent);
+Vue.component('nswitch-component',NswitchComponent);
 
 Vue.component('rfrashcards-component',RfrashCardsComponent);
+Vue.component('rswitch-component',RswitchComponent);
 
 
 Vue.use(VueRouter);
@@ -39,6 +41,13 @@ const router = new VueRouter({
             path: '/todo',
             name: 'task.list',
             component: TaskListComponent
+        },
+
+        {
+            path: '/todo/create',
+            name: 'task.create',
+            component: TaskCreateComponent,
+            props: true
         },
 
         {

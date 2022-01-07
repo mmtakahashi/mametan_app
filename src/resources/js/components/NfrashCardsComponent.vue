@@ -36,19 +36,10 @@
         </div>
 
         <div class="button-container">
-
-            <button @click="reset">←</button>
-            <button @click="increment">→</button>
-            
-            <!-- <qandas-component></qandas-component>  -->
-            
-            <!-- <button @click="isActive -= 1">-1</button>
-            <button @click="isActive += 1">+1</button>
-        
-            <qandas-component
-            @forword-switch="forword_switch"
-            @back-switch="back_switch">
-            </qandas-component>             -->
+            <nswitch-component
+            @increment="increment"
+            @reset="reset">
+            </nswitch-component>            
         </div>
 
         <router-link v-bind:to="{name: 'task.list'}">
@@ -59,9 +50,9 @@
 </template>
 
 <script>
-import QandAsComponent from './QandAsComponent.vue'
+import NswitchComponent from './NswitchComponent.vue'
 export default {
-  components: { QandAsComponent },
+  components: { NswitchComponent },
     data: function() {
         return {
             num:0,

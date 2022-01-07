@@ -1,11 +1,17 @@
 <template>
     <div class="container">
+        <div>
+            <router-link v-bind:to="{name: 'task.create'}">
+                <button class="btn btn-success">問題追加</button>
+           </router-link>
+        </div>
+
         <table class="table table-hover">
             <thead class="thead-light">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Content</th>
+                <th scope="col">問題</th>
+                <th scope="col">答え</th>
                 <th scope="col">ノーマル</th>
                 <th scope="col">ランダム</th>
                 <th scope="col">編集</th>
@@ -27,7 +33,7 @@
                     </router-link>
                 </td>
                 <td>
-                    <router-link v-bind:to="{name: 'task.edit', params: {taskId: task.id }}">
+                    <router-link v-bind:to="{name: 'task.edit', params: {taskId: task.id.toString() }}">
                         <button class="btn btn-success">編集</button>
                     </router-link>
                 </td>

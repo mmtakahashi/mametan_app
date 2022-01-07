@@ -19,7 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/todo', 'TaskController@index');
-Route::post('/todo/{task}', 'TaskController@store');
+Route::post('/todo', 'TaskController@store');
+Route::get('/todo/create', 'TaskController@index');
 Route::get('/todo/show', 'TaskController@index');
 Route::put('/todo/{task}', 'TaskController@update');
 
