@@ -2238,7 +2238,7 @@ __webpack_require__.r(__webpack_exports__);
     getTasks: function getTasks() {
       var _this = this;
 
-      axios.get('/api/todo/create').then(function (res) {
+      axios.get('/api/todo/').then(function (res) {
         _this.tasks = res.data;
       });
     },
@@ -2394,6 +2394,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2406,6 +2409,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/todo').then(function (res) {
         _this.tasks = res.data;
+      });
+    },
+    deleteTask: function deleteTask(id) {
+      var _this2 = this;
+
+      axios["delete"]('/api/tasks/' + id).then(function (res) {
+        _this2.getTasks();
       });
     }
   },
@@ -38998,18 +39008,18 @@ var render = function () {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.task.title,
-                  expression: "task.title",
+                  value: _vm.task.question,
+                  expression: "task.question",
                 },
               ],
               attrs: { type: "text", id: "question" },
-              domProps: { value: _vm.task.title },
+              domProps: { value: _vm.task.question },
               on: {
                 input: function ($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.task, "title", $event.target.value)
+                  _vm.$set(_vm.task, "question", $event.target.value)
                 },
               },
             }),
@@ -39023,18 +39033,18 @@ var render = function () {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.task.content,
-                  expression: "task.content",
+                  value: _vm.task.answer,
+                  expression: "task.answer",
                 },
               ],
               attrs: { type: "text", id: "answer" },
-              domProps: { value: _vm.task.content },
+              domProps: { value: _vm.task.answer },
               on: {
                 input: function ($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.task, "content", $event.target.value)
+                  _vm.$set(_vm.task, "answer", $event.target.value)
                 },
               },
             }),
@@ -39282,6 +39292,21 @@ var render = function () {
               ],
               1
             ),
+            _vm._v(" "),
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  on: {
+                    click: function ($event) {
+                      return _vm.deleteTask(task.id)
+                    },
+                  },
+                },
+                [_vm._v("削除")]
+              ),
+            ]),
           ])
         }),
         0
@@ -39307,6 +39332,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("ランダム")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("編集")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("削除")]),
       ]),
     ])
   },

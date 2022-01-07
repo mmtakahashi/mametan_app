@@ -5,13 +5,13 @@
             <div>
 
                 <label for="question">問題</label>
-                <input type="text" id="question" v-model="task.title">
+                <input type="text" id="question" v-model="task.question">
 
             </div>
             <div>
 
                 <label for="answer">答え</label>
-                <input type="text" id="answer" v-model="task.content">
+                <input type="text" id="answer" v-model="task.answer">
 
             </div>
 
@@ -30,12 +30,12 @@
         data: function () {
             return {
                 tasks: [],
-                task: {},
+                task: {}
            }
        },
        methods: {
             getTasks() {
-                axios.get('/api/todo/create')
+                axios.get('/api/todo/')
                     .then((res) => {
                         this.tasks = res.data;
                    });
@@ -45,12 +45,11 @@
                     .then((res) => {
                         this.$router.push({name: 'task.list'});
                    });
-
            }
        },
        computed: {
            limitCheck(){
-                return this.tasks.length >=10 ? "true" : "false"
+                return this.tasks.length >= 10 ? "true" : "false"
                 },
             alart(){
                 return this.limitCheck === "true" ?  "10件以上は登録できません": ""

@@ -15,6 +15,7 @@
                 <th scope="col">ノーマル</th>
                 <th scope="col">ランダム</th>
                 <th scope="col">編集</th>
+                <th scope="col">削除</th>
             </tr>
             </thead>
             <tbody>
@@ -37,6 +38,8 @@
                         <button class="btn btn-success">編集</button>
                     </router-link>
                 </td>
+                <td>
+                    <button class="btn btn-danger" v-on:click="deleteTask(task.id)">削除</button>                </td>
             </tr>
             
             </tbody>
@@ -57,7 +60,13 @@
                    .then((res) => {
                        this.tasks = res.data;
                    });
-           }
+           },
+            deleteTask(id) {
+                axios.delete('/api/tasks/' + id)
+                    .then((res) => {
+                        this.getTasks();
+                    });
+            }
        },
        mounted() {
            this.getTasks();

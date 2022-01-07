@@ -23,6 +23,7 @@ Route::post('/todo', 'TaskController@store');
 Route::get('/todo/create', 'TaskController@index');
 Route::get('/todo/show', 'TaskController@index');
 Route::put('/todo/{task}', 'TaskController@update');
+Route::delete('/tasks/{task}', 'TaskController@destroy');
 
 
 // Route::group(["middleware" => "auth.api"],function(){
