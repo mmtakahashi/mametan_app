@@ -13,8 +13,6 @@ class TasksTableSeeder extends Seeder
     {
         for ($i = 1; $i <= 10; $i++) {
             Task::create([
-                'title' => 'title' . $i,
-                'content' => 'content' . $i,
                 'question' => 'question' . $i,
                 'answer' => 'answer' . $i,
             ]);

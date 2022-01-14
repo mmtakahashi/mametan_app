@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="text-wrapper">
-
+            <p>{{arryCheck()}}</p>
             <h2>{{QAcheck}}</h2>
 
             <!-- <h2 class="text" v-if="isActive === 1">{{ arrayElements() }}</h2>
@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         increment(){
-            if(this.num < 21) {
+            if(this.num < this.tasks.length * 2) {
                 this.num += 1
             }
         },
@@ -87,7 +87,10 @@ export default {
             for(let i = 21; i > 0; i--) {
                 this.isActive += i
             }
-        } 
+        },
+        arryCheck() {
+            return this.tasks.length
+        }
     },
     computed: {
         QAcheck: function(){

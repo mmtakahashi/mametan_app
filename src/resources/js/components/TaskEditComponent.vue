@@ -4,10 +4,6 @@
             <div class="col-sm-6">
                 <form v-on:submit.prevent="submit">
                     <div class="form-group row">
-                        <label for="id" class="">ID</label>
-                        <input type="text" class="" readonly id="id" v-model="task.id">
-                    </div>
-                    <div class="form-group row">
                         <label for="question" class="">問題</label>
                         <input type="text" class="" id="question" v-model="task.question">
                     </div>

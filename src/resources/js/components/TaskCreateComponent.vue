@@ -1,6 +1,5 @@
 <template>
 <div>
-   
         <form v-on:submit.prevent="submit">
             <div>
 
@@ -45,7 +44,7 @@
                     .then((res) => {
                         this.$router.push({name: 'task.list'});
                    });
-           }
+           },
        },
        computed: {
            limitCheck(){
