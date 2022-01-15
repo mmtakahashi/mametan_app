@@ -1,5 +1,7 @@
 import VueRouter from 'vue-router';
 import TaskListComponent from "./components/TaskListComponent";
+import FolderComponent from "./components/FolderComponent"
+
 import TaskCreateComponent from "./components/TaskCreateComponent";
 import TaskShowComponent from "./components/TaskShowComponent";
 import TaskRandomShowComponent from "./components/TaskRandomShowComponent";
@@ -26,6 +28,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('folder-component' ,FolderComponent);
 Vue.component('nfrashcards-component',NfrashCardsComponent);
 Vue.component('nswitch-component',NswitchComponent);
 

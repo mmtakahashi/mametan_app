@@ -1,7 +1,13 @@
 <template>
     <div class="container">
 
-        <div class="side-contents">
+        <folder-component
+            @tabSwitch1="tabSwitch1"
+            @tabSwitch2="tabSwitch2"
+            @tabSwitch3="tabSwitch3">
+        </folder-component>
+
+        <!-- <div class="side-contents">
             <nav>
                 <ul class="folder">
                 <li class="folder-name"><a @click="tabSwitch1" href="#">果物</a></li>
@@ -9,7 +15,7 @@
                 <li class="folder-name"><a @click="tabSwitch3" href="#">レシピ</a></li>
                 </ul>
             </nav>
-        </div>  
+        </div>   -->
             
 
         <div v-if="num === 1">
