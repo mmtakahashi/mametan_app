@@ -4,9 +4,9 @@
   <div class="side-contents">
     <nav>
         <ul class="folder">
-        <li class="folder-name"><a @click="tabSwitch1()" href="#">果物</a></li>
-        <li class="folder-name"><a @click="tabSwitch2()" href="#">英単語</a></li>
-        <li class="folder-name"><a @click="tabSwitch3()" href="#">レシピ</a></li>
+        <li :class="{'tab__item--active': num === 1 }" class="folder-name"><a @click="tabSwitch1()" href="#">果物</a></li>
+        <li :class="{'tab__item--active': num === 2 }" class="folder-name"><a @click="tabSwitch2()" href="#">英単語</a></li>
+        <li :class="{'tab__item--active': num === 3 }" class="folder-name"><a @click="tabSwitch3()" href="#">レシピ</a></li>
         </ul>
     </nav>
   </div>  
@@ -78,28 +78,35 @@
       },
       
     },
-    // props: {
-    //   'num': {
-    //     type: Number
-    //   }
-    // }
+    props: {
+      'num': {
+        type: Number,
+        required: true
+      }
+    }
   }
 </script>
 
 <style scoped>
-  .container {
-    display: flex;
-}
-
 .folder {
     width: 200px;
+    margin-top: 30px;
+    margin-right: 30px;
 }
 
 ul {
     list-style: none;
 }
 
+a {
+  font-size: 22px;
+}
+
 .folder-name {
     width: 100%;
+}
+
+.tab__item--active {
+  background-color: blue;
 }
 </style>

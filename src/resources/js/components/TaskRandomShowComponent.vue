@@ -1,6 +1,9 @@
 <template>
     <div class="container">
-        <rfrashcards-component :getTasks="getTasks" :tasks="tasks"></rfrashcards-component>
+        <rfrashcards-component 
+        :getTasks="getTasks" 
+        :tasks="tasks">
+        </rfrashcards-component>
     </div>
 </template>
 

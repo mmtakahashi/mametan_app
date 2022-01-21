@@ -1982,12 +1982,13 @@ __webpack_require__.r(__webpack_exports__);
     tabSwitch3: function tabSwitch3() {
       this.$emit('tabSwitch3');
     }
-  } // props: {
-  //   'num': {
-  //     type: Number
-  //   }
-  // }
-
+  },
+  props: {
+    'num': {
+      type: Number,
+      required: true
+    }
+  }
 });
 
 /***/ }),
@@ -2072,25 +2073,13 @@ __webpack_require__.r(__webpack_exports__);
     reset: function reset() {
       if (this.num > 0) {
         this.num -= 1;
-      } // this.num =0
-      // this.numQ =0
-
+      }
     },
     arrayElements: function arrayElements() {
       if ((this.isActive + 1) % 2 == 1) {
         this.isActive = "question";
       } else if ((this.isActive + 1) % 2 == 0) {
         this.isActive = "answer";
-      }
-    },
-    forword_switch: function forword_switch() {
-      for (var i = 0; i < 21; i++) {
-        this.isActive += i;
-      }
-    },
-    back_switch: function back_switch() {
-      for (var i = 21; i > 0; i--) {
-        this.isActive += i;
       }
     },
     arryCheck: function arryCheck() {
@@ -2114,10 +2103,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     'getTasks': {
-      type: Function
+      type: Function,
+      required: true
     },
     'tasks': {
-      type: Array
+      type: Array,
+      required: true
     }
   }
 });
@@ -2603,6 +2594,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2655,6 +2664,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -7099,7 +7111,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.container[data-v-c232cdd8] {\n    display: flex;\n}\n.folder[data-v-c232cdd8] {\n    width: 200px;\n}\nul[data-v-c232cdd8] {\n    list-style: none;\n}\n.folder-name[data-v-c232cdd8] {\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.folder[data-v-c232cdd8] {\n    width: 200px;\n    margin-top: 30px;\n    margin-right: 30px;\n}\nul[data-v-c232cdd8] {\n    list-style: none;\n}\na[data-v-c232cdd8] {\n  font-size: 22px;\n}\n.folder-name[data-v-c232cdd8] {\n    width: 100%;\n}\n.tab__item--active[data-v-c232cdd8] {\n  background-color: blue;\n}\n", ""]);
 
 // exports
 
@@ -7156,7 +7168,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.container[data-v-a75d8ec2] {\n    display: flex;\n}\n.folder[data-v-a75d8ec2] {\n    width: 200px;\n}\nul[data-v-a75d8ec2] {\n    list-style: none;\n}\n.folder-name[data-v-a75d8ec2] {\n    width: 100%;\n}\n.folder-name[data-v-a75d8ec2]:hover {\n    background: rgba(51, 137, 187, 0.438);\n}\n.folder-name[data-v-a75d8ec2]::-moz-selection {\n    background: rgba(51, 137, 187, 0.438);\n}\n.folder-name[data-v-a75d8ec2]::selection {\n    background: rgba(51, 137, 187, 0.438);\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-a75d8ec2] {\n    display: flex;\n}\n.folder[data-v-a75d8ec2] {\n    width: 200px;\n}\nul[data-v-a75d8ec2] {\n    list-style: none;\n}\n.folder-name[data-v-a75d8ec2] {\n    width: 100%;\n    font-size: 20px;\n}\n.tab_active[data-v-a75d8ec2] {\n    background: rgba(51, 137, 187, 0.438);\n}\n.btn_pos[data-v-a75d8ec2] {\n    margin-left: 280px;\n}\n", ""]);
 
 // exports
 
@@ -39102,50 +39114,71 @@ var render = function () {
     _c("div", { staticClass: "side-contents" }, [
       _c("nav", [
         _c("ul", { staticClass: "folder" }, [
-          _c("li", { staticClass: "folder-name" }, [
-            _c(
-              "a",
-              {
-                attrs: { href: "#" },
-                on: {
-                  click: function ($event) {
-                    return _vm.tabSwitch1()
+          _c(
+            "li",
+            {
+              staticClass: "folder-name",
+              class: { "tab__item--active": _vm.num === 1 },
+            },
+            [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.tabSwitch1()
+                    },
                   },
                 },
-              },
-              [_vm._v("果物")]
-            ),
-          ]),
+                [_vm._v("果物")]
+              ),
+            ]
+          ),
           _vm._v(" "),
-          _c("li", { staticClass: "folder-name" }, [
-            _c(
-              "a",
-              {
-                attrs: { href: "#" },
-                on: {
-                  click: function ($event) {
-                    return _vm.tabSwitch2()
+          _c(
+            "li",
+            {
+              staticClass: "folder-name",
+              class: { "tab__item--active": _vm.num === 2 },
+            },
+            [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.tabSwitch2()
+                    },
                   },
                 },
-              },
-              [_vm._v("英単語")]
-            ),
-          ]),
+                [_vm._v("英単語")]
+              ),
+            ]
+          ),
           _vm._v(" "),
-          _c("li", { staticClass: "folder-name" }, [
-            _c(
-              "a",
-              {
-                attrs: { href: "#" },
-                on: {
-                  click: function ($event) {
-                    return _vm.tabSwitch3()
+          _c(
+            "li",
+            {
+              staticClass: "folder-name",
+              class: { "tab__item--active": _vm.num === 3 },
+            },
+            [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.tabSwitch3()
+                    },
                   },
                 },
-              },
-              [_vm._v("レシピ")]
-            ),
-          ]),
+                [_vm._v("レシピ")]
+              ),
+            ]
+          ),
         ]),
       ]),
     ]),
@@ -39598,127 +39631,217 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("folder-component", {
-        on: {
-          tabSwitch1: _vm.tabSwitch1,
-          tabSwitch2: _vm.tabSwitch2,
-          tabSwitch3: _vm.tabSwitch3,
-        },
-      }),
-      _vm._v(" "),
-      _vm.num === 1
-        ? _c(
-            "div",
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "side-contents" }, [
+      _c("nav", [
+        _c("ul", { staticClass: "folder" }, [
+          _c(
+            "li",
+            {
+              staticClass: "folder-name",
+              class: { tab_active: _vm.num === 1 },
+            },
             [
-              _c("router-link", { attrs: { to: { name: "task.create" } } }, [
-                _c("button", {}, [_vm._v("問題追加")]),
+              _c("a", { attrs: { href: "#" }, on: { click: _vm.tabSwitch1 } }, [
+                _vm._v("果物"),
               ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            {
+              staticClass: "folder-name",
+              class: { tab_active: _vm.num === 2 },
+            },
+            [
+              _c("a", { attrs: { href: "#" }, on: { click: _vm.tabSwitch2 } }, [
+                _vm._v("英単語"),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            {
+              staticClass: "folder-name",
+              class: { tab_active: _vm.num === 3 },
+            },
+            [
+              _c("a", { attrs: { href: "#" }, on: { click: _vm.tabSwitch3 } }, [
+                _vm._v("レシピ"),
+              ]),
+            ]
+          ),
+        ]),
+      ]),
+    ]),
+    _vm._v(" "),
+    _vm.num === 1
+      ? _c(
+          "div",
+          [
+            _c("table", { staticClass: "table table-hover" }, [
+              _c("thead", { staticClass: "thead-light" }, [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("ノーマル")]),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    { attrs: { scope: "col" } },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "task.show" } } },
+                        [
+                          _c("button", { staticClass: "btn btn-primary" }, [
+                            _vm._v("スタート"),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("ランダム")]),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    { attrs: { scope: "col" } },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "task.rshow" } } },
+                        [
+                          _c("button", { staticClass: "btn btn-primary" }, [
+                            _vm._v("スタート"),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("router-link", { attrs: { to: { name: "task.create" } } }, [
+              _c("button", { staticClass: "btn btn-outline-primary btn_pos" }, [
+                _vm._v("問題追加"),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(0),
               _vm._v(" "),
-              _c("table", { staticClass: "table table-hover" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.tasks, function (task, index) {
-                    return _c("tr", { key: index }, [
-                      _c("td", [_vm._v(_vm._s(task.question))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(task.answer))]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c(
-                            "router-link",
-                            { attrs: { to: { name: "task.show" } } },
-                            [
-                              _c("button", { staticClass: "btn btn-primary" }, [
-                                _vm._v("スタート"),
-                              ]),
-                            ]
-                          ),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c(
-                            "router-link",
-                            { attrs: { to: { name: "task.rshow" } } },
-                            [
-                              _c("button", { staticClass: "btn btn-primary" }, [
-                                _vm._v("スタート"),
-                              ]),
-                            ]
-                          ),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              attrs: {
-                                to: {
-                                  name: "task.edit",
-                                  params: { taskId: task.id.toString() },
-                                },
-                              },
-                            },
-                            [
-                              _c("button", { staticClass: "btn btn-success" }, [
-                                _vm._v("編集"),
-                              ]),
-                            ]
-                          ),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("td", [
+              _c(
+                "tbody",
+                _vm._l(_vm.tasks, function (task, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(task.question))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(task.answer))]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
                         _c(
-                          "button",
+                          "router-link",
                           {
-                            staticClass: "btn btn-danger",
-                            on: {
-                              click: function ($event) {
-                                return _vm.deleteTask(task.id)
+                            attrs: {
+                              to: {
+                                name: "task.edit",
+                                params: { taskId: task.id.toString() },
                               },
                             },
                           },
-                          [_vm._v("削除")]
+                          [
+                            _c("button", { staticClass: "btn btn-success" }, [
+                              _vm._v("編集"),
+                            ]),
+                          ]
                         ),
-                      ]),
-                    ])
-                  }),
-                  0
-                ),
-              ]),
-            ],
-            1
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.num === 2
-        ? _c("div", [
-            _c(
-              "div",
-              [
-                _c("router-link", { attrs: { to: { name: "task.create" } } }, [
-                  _c("button", {}, [_vm._v("問題追加")]),
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function ($event) {
+                              return _vm.deleteTask(task.id)
+                            },
+                          },
+                        },
+                        [_vm._v("削除")]
+                      ),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+            ]),
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.num === 2
+      ? _c(
+          "div",
+          [
+            _c("table", { staticClass: "table table-hover" }, [
+              _c("thead", { staticClass: "thead-light" }, [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("ノーマル")]),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    { attrs: { scope: "col" } },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "task.show" } } },
+                        [
+                          _c("button", { staticClass: "btn btn-primary" }, [
+                            _vm._v("スタート"),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("ランダム")]),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    { attrs: { scope: "col" } },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "task.rshow" } } },
+                        [
+                          _c("button", { staticClass: "btn btn-primary" }, [
+                            _vm._v("スタート"),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
                 ]),
-              ],
-              1
-            ),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("router-link", { attrs: { to: { name: "task.create" } } }, [
+              _c("button", { staticClass: "btn btn-outline-primary btn_pos" }, [
+                _vm._v("問題追加"),
+              ]),
+            ]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-hover" }, [
               _vm._m(1),
@@ -39736,38 +39859,6 @@ var render = function () {
                       [
                         _c(
                           "router-link",
-                          { attrs: { to: { name: "task.show" } } },
-                          [
-                            _c("button", { staticClass: "btn btn-primary" }, [
-                              _vm._v("スタート"),
-                            ]),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: { name: "task.rshow" } } },
-                          [
-                            _c("button", { staticClass: "btn btn-primary" }, [
-                              _vm._v("スタート"),
-                            ]),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c(
-                          "router-link",
                           {
                             attrs: {
                               to: {
@@ -39805,20 +39896,64 @@ var render = function () {
                 0
               ),
             ]),
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.num === 3
-        ? _c("div", [
-            _c(
-              "div",
-              [
-                _c("router-link", { attrs: { to: { name: "task.create" } } }, [
-                  _c("button", {}, [_vm._v("問題追加")]),
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.num === 3
+      ? _c(
+          "div",
+          [
+            _c("table", { staticClass: "table table-hover" }, [
+              _c("thead", { staticClass: "thead-light" }, [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("ノーマル")]),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    { attrs: { scope: "col" } },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "task.show" } } },
+                        [
+                          _c("button", { staticClass: "btn btn-primary" }, [
+                            _vm._v("スタート"),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("ランダム")]),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    { attrs: { scope: "col" } },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "task.rshow" } } },
+                        [
+                          _c("button", { staticClass: "btn btn-primary" }, [
+                            _vm._v("スタート"),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
                 ]),
-              ],
-              1
-            ),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("router-link", { attrs: { to: { name: "task.create" } } }, [
+              _c("button", { staticClass: "btn btn-outline-primary btn_pos" }, [
+                _vm._v("問題追加"),
+              ]),
+            ]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-hover" }, [
               _vm._m(2),
@@ -39836,38 +39971,6 @@ var render = function () {
                       [
                         _c(
                           "router-link",
-                          { attrs: { to: { name: "task.show" } } },
-                          [
-                            _c("button", { staticClass: "btn btn-primary" }, [
-                              _vm._v("スタート"),
-                            ]),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: { name: "task.rshow" } } },
-                          [
-                            _c("button", { staticClass: "btn btn-primary" }, [
-                              _vm._v("スタート"),
-                            ]),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c(
-                          "router-link",
                           {
                             attrs: {
                               to: {
@@ -39905,11 +40008,11 @@ var render = function () {
                 0
               ),
             ]),
-          ])
-        : _vm._e(),
-    ],
-    1
-  )
+          ],
+          1
+        )
+      : _vm._e(),
+  ])
 }
 var staticRenderFns = [
   function () {
@@ -39918,13 +40021,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead-light" }, [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("問題1")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("問題")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("答え")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ノーマル")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ランダム")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("編集")]),
         _vm._v(" "),
@@ -39938,13 +40037,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead-light" }, [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("問題2")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("問題")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("答え")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ノーマル")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ランダム")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("編集")]),
         _vm._v(" "),
@@ -39958,13 +40053,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead-light" }, [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("問題3")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("問題")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("答え")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ノーマル")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ランダム")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("編集")]),
         _vm._v(" "),

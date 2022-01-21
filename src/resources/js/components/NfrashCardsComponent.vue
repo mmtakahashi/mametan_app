@@ -68,24 +68,12 @@ export default {
             if(this.num > 0) {
                 this.num -= 1
             }
-            // this.num =0
-            // this.numQ =0
         },
         arrayElements: function() {
             if((this.isActive+1) % 2 == 1) {
                 this.isActive = "question"
             } else if((this.isActive+1) % 2 == 0) {
                 this.isActive = "answer"
-            }
-        },
-        forword_switch: function() {
-            for(let i = 0; i < 21; i++) {
-                this.isActive += i   
-            }
-        },
-        back_switch: function() {
-            for(let i = 21; i > 0; i--) {
-                this.isActive += i
             }
         },
         arryCheck() {
@@ -108,10 +96,12 @@ export default {
     },
     props: {
         'getTasks':{
-            type: Function
+            type: Function,
+            required: true
         },
         'tasks':{
-            type: Array
+            type: Array,
+            required: true
         }
     }
 }
